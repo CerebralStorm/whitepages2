@@ -1,0 +1,4 @@
+<div class="jumbotron">
+  <h2>You should do an LTI Launch</h2>
+  <%= link "New organization", to: organization_path(@conn, :new) %>
+</div>

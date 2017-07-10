@@ -1,0 +1,23 @@
+<h2>Show user</h2>
+
+<ul>
+
+  <li>
+    <strong>Canvas user:</strong>
+    <%= @user.canvas_user_id %>
+  </li>
+
+  <li>
+    <strong>Sis:</strong>
+    <%= @user.sis_id %>
+  </li>
+
+  <li>
+    <strong>Data:</strong>
+    <%= @user.data %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: organization_user_path(@conn, :edit, @user, @organization_id) %>
+<%= link "Back", to: organization_user_path(@conn, :index, @organization_id) %>

@@ -1,0 +1,32 @@
+<h2>Show organization</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @organization.name %>
+  </li>
+
+  <li>
+    <strong>Key:</strong>
+    <%= @organization.key %>
+  </li>
+
+  <li>
+    <strong>Secret:</strong>
+    <%= @organization.secret %>
+  </li>
+
+  <li>
+    <strong>Settings:</strong>
+    <%= @organization.settings %>
+  </li>
+
+</ul>
+
+
+<%= link "Users", to: organization_user_path(@conn, :index, @organization) %>
+
+
+<%= link "Edit", to: organization_path(@conn, :edit, @organization) %>
+<%= link "Back", to: organization_path(@conn, :index) %>
