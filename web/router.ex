@@ -28,6 +28,8 @@ defmodule Whitepages2.Router do
     resources "/organizations", OrganizationController do
       resources "/users", UserController
       resources "/courses", CourseController
+      resources "/enrollments", EnrollmentController, except: [:new, :edit]
+      resources "/sections", SectionController, except: [:new, :edit]
     end
   end
 

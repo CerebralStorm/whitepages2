@@ -28,7 +28,7 @@ defmodule Whitepages2.CourseController do
 
   def show(conn, %{"id" => id, "organization_id" => organization_id}) do
     course = Apartmentex.get!(Repo, Course, id, organization_id)
-    render(conn, "show.html", course: course)
+    render(conn, "show.html", course: course, organization_id: organization_id)
   end
 
   def edit(conn, %{"id" => id, "organization_id" => organization_id}) do
