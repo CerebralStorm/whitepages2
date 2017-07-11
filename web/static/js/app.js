@@ -12,6 +12,9 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
+import React from "react"
+import ReactDOM from "react-dom"
+import Course from "./components/course/Course"
 
 // Import local files
 //
@@ -19,3 +22,11 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+
+export var CourseApp = {
+  run: function(){
+    var element = document.getElementById("react-course")
+    ReactDOM.render(<Course />, element)
+  }
+}

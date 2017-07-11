@@ -45,7 +45,7 @@ defmodule Whitepages2.CourseController do
       {:ok, course} ->
         conn
         |> put_flash(:info, "Course updated successfully.")
-        |> redirect(to: organization_course_path(conn, :show, course, organization_id))
+        |> redirect(to: organization_course_path(conn, :show, organization_id, course))
       {:error, changeset} ->
         render(conn, "edit.html", course: course, changeset: changeset)
     end
