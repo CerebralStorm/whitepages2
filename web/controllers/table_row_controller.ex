@@ -25,12 +25,12 @@ defmodule Whitepages2.TableRowController do
   end
 
   def show(conn, %{"id" => id, "organization_id" => organization_id}) do
-    table_row = Repo.get!(TableRow, id)
+    table_row = Apartmentex.get!(Repo, TableRow, id, organization_id)
     render(conn, "show.json", table_row: table_row)
   end
 
   def update(conn, %{"id" => id, "organization_id" => organization_id, "table_row" => table_row_params}) do
-    table_row = Repo.get!(TableRow, id)
+    table_row = Apartmentex.get!(Repo, TableRow, id, organization_id)
     changeset = TableRow.changeset(table_row, table_row_params)
 
     case Repo.update(changeset) do
@@ -44,7 +44,7 @@ defmodule Whitepages2.TableRowController do
   end
 
   def delete(conn, %{"id" => id, "organization_id" => organization_id}) do
-    table_row = Repo.get!(TableRow, id)
+    table_row = Apartmentex.get!(Repo, TableRow, id, organization_id)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).

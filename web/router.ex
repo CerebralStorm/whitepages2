@@ -2,7 +2,7 @@ defmodule Whitepages2.Router do
   use Whitepages2.Web, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_flash
     #plug PlugLti
@@ -32,6 +32,7 @@ defmodule Whitepages2.Router do
       resources "/sections", SectionController, except: [:new, :edit]
       resources "/tables", TableController, except: [:new, :edit] do
         resources "/table_rows", TableRowController, except: [:new, :edit]
+        resources "/table_columns", TableColumnController, except: [:new, :edit]
       end
     end
   end
