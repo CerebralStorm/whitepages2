@@ -11,7 +11,7 @@ defmodule Whitepages2.EnrollmentController do
   def create(conn, %{"enrollment" => enrollment_params, "organization_id" => organization_id}) do
     changeset = Enrollment.changeset(%Enrollment{}, enrollment_params)
 
-    case Repo.insert(changeset) do
+    case Apartmentex.insert(Repo, changeset, organization_id) do
       {:ok, enrollment} ->
         conn
         |> put_status(:created)
@@ -25,12 +25,12 @@ defmodule Whitepages2.EnrollmentController do
   end
 
   def show(conn, %{"id" => id, "organization_id" => organization_id}) do
-    enrollment = Repo.get!(Enrollment, id)
+    enrollment = Apartmentex.get!(Repo, Enrollment, id, organization_id)
     render(conn, "show.json", enrollment: enrollment, organization_id: organization_id)
   end
 
   def update(conn, %{"id" => id, "organization_id" => organization_id, "enrollment" => enrollment_params}) do
-    enrollment = Repo.get!(Enrollment, id)
+    enrollment = Apartmentex.get!(Repo, Enrollment, id, organization_id)
     changeset = Enrollment.changeset(enrollment, enrollment_params)
 
     case Repo.update(changeset) do
@@ -44,7 +44,7 @@ defmodule Whitepages2.EnrollmentController do
   end
 
   def delete(conn, %{"id" => id, "organization_id" => organization_id}) do
-    enrollment = Repo.get!(Enrollment, id)
+    enrollment = Apartmentex.get!(Repo, Enrollment, id, organization_id)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).

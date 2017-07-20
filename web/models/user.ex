@@ -5,6 +5,7 @@ defmodule Whitepages2.User do
     field :canvas_user_id, :string
     field :sis_id, :string
     field :data, :string
+    has_many :tables, Whitepages2.Table
 
     timestamps()
   end

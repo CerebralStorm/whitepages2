@@ -11,7 +11,7 @@ defmodule Whitepages2.SectionController do
   def create(conn, %{"section" => section_params, "organization_id" => organization_id}) do
     changeset = Section.changeset(%Section{}, section_params)
 
-    case Repo.insert(changeset) do
+    case Apartmentex.insert(Repo, changeset, organization_id) do
       {:ok, section} ->
         conn
         |> put_status(:created)
@@ -25,12 +25,12 @@ defmodule Whitepages2.SectionController do
   end
 
   def show(conn, %{"id" => id, "organization_id" => organization_id}) do
-    section = Repo.get!(Section, id)
+    section = Apartmentex.get!(Repo, Section, id, organization_id)
     render(conn, "show.json", section: section, organization_id: organization_id)
   end
 
   def update(conn, %{"id" => id, "organization_id" => organization_id, "section" => section_params}) do
-    section = Repo.get!(Section, id)
+    section = Apartmentex.get!(Repo, Section, id, organization_id)
     changeset = Section.changeset(section, section_params)
 
     case Repo.update(changeset) do
@@ -44,7 +44,7 @@ defmodule Whitepages2.SectionController do
   end
 
   def delete(conn, %{"id" => id, "organization_id" => organization_id}) do
-    section = Repo.get!(Section, id)
+    section = Apartmentex.get!(Repo, Section, id, organization_id)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
