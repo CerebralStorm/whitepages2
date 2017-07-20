@@ -5,7 +5,7 @@ defmodule Whitepages2.Organization do
     field :name, :string
     field :key, :string
     field :secret, :string
-    field :settings, :string
+    field :settings, :map
 
     timestamps()
   end

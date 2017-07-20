@@ -39,7 +39,8 @@ defmodule Whitepages2.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:cors_plug, "~> 1.2"},
-     {:apartmentex, "~> 0.2.3"}]
+     {:apartmentex, "~> 0.2.3"},
+     {:ex_machina, "~> 2.0", only: :test}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

@@ -5,7 +5,7 @@ defmodule Whitepages2.UserController do
 
   def index(conn, %{"organization_id" => organization_id}) do
     users = Apartmentex.all(Repo, User, organization_id)
-    render(conn, "index.html", users: users, organization_id: organization_id)
+    render(conn, "index.json", users: users, organization_id: organization_id)
   end
 
   def new(conn, %{"organization_id" => organization_id}) do
@@ -17,18 +17,21 @@ defmodule Whitepages2.UserController do
     changeset = User.changeset(%User{}, user_params)
 
     case Apartmentex.insert(Repo, changeset, organization_id) do
-      {:ok, _user} ->
+      {:ok, user} ->
         conn
-        |> put_flash(:info, "User created successfully.")
-        |> redirect(to: organization_user_path(conn, :index, organization_id))
+        |> put_status(:created)
+        |> put_resp_header("location", organization_user_path(conn, :show, organization_id, user))
+        |> render("show.json", user: user)
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset, organization_id: organization_id)
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(Whitepages2.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
   def show(conn, %{"id" => id, "organization_id" => organization_id}) do
     user = Apartmentex.get!(Repo, User, id, organization_id)
-    render(conn, "show.html", user: user, organization_id: organization_id)
+    render(conn, "show.json", user: user, organization_id: organization_id)
   end
 
   def edit(conn, %{"id" => id, "organization_id" => organization_id}) do

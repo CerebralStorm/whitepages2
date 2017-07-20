@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import Dashboard from './Dashboard'
 import StudentInfo from './StudentInfo'
+import Profile from './Profile'
 import Messages from './Messages'
 
 import {
@@ -23,6 +24,7 @@ class Course extends React.Component {
           </ul>
 
           <Redirect from="/" exact to="/dashboard" />
+          <Route path="/users/:user_id" component={Profile}/>
           <Route path="/dashboard" component={Dashboard}/>
           <Route path="/student_info" component={StudentInfo}/>
           <Route path="/messages" component={Messages}/>

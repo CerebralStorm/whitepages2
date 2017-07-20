@@ -20,8 +20,9 @@ defmodule Whitepages2.OrganizationController do
       {:ok, organization} ->
         Apartmentex.new_tenant(Repo, organization)
         conn
-        |> put_flash(:info, "Organization created successfully.")
-        |> redirect(to: organization_path(conn, :index))
+        |> put_status(:created)
+        |> put_resp_header("location", organization_path(conn, :show, organization))
+        |> render("show.json", organization: organization)
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end

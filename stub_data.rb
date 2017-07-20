@@ -16,6 +16,32 @@ def create(url, body)
   puts response.body
 end
 
+# create("http://localhost:4000/organizations/", {
+#   organization: {
+#     name: 'Local',
+#     key: 'key',
+#     secret: 'secret',
+#     settings: {
+#       base_url: 'http://localhost:3000',
+#       api_token: 'KmrdM0oD20ANCuqKgnd4quHrqoDGuXy84vTNjHHRfHxxs6NAckrltq4Y40CwUJ8a'
+#     }
+#   }
+# })
+
+# create("http://localhost:4000/organizations/1/users", {
+#   user: {
+#     canvas_user_id: "4",
+#     sis_id: "user_4",
+#     data: {
+#       first_name: 'Stan',
+#       last_name: 'Derson',
+#       email: 'stan@test.com',
+#       phone: '801-444-4444',
+#       address: '123 Elm St.'
+#     }
+#   }
+# })
+
 create("http://localhost:4000/organizations/1/tables", {
   table: {
     user_id: 1,
@@ -58,3 +84,4 @@ create("http://localhost:4000/organizations/1/tables/1/table_columns", {
     position: 2
   }
 })
+

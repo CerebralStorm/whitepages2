@@ -14,6 +14,8 @@ defmodule Whitepages2.TableController do
     case Apartmentex.insert(Repo, changeset, organization_id) do
       {:ok, table} ->
         conn
+        |> Repo.preload(:table_columns)
+        |> Repo.preload(:table_rows)
         |> put_status(:created)
         |> put_resp_header("location", organization_table_path(conn, :show, organization_id, table))
         |> render("show.json", table: table)

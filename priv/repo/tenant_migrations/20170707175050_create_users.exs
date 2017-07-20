@@ -5,7 +5,7 @@ defmodule Whitepages2.Repo.TenantMigrations.CreateUsers do
     create table(:users) do
       add :canvas_user_id, :string
       add :sis_id, :string
-      add :data, :string
+      add :data, :map
 
       timestamps()
     end
