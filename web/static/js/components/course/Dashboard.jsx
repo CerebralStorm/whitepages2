@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import DashboardTable from "./DashboardTable"
 import $ from "jquery"
 
 class Dashboard extends React.Component {
@@ -11,26 +12,17 @@ class Dashboard extends React.Component {
     };
 
     $.ajax({
-      url: '/api/organizations/1/tables/1',
-      dataType: 'application/json',
+      url: '/api/organizations/1/tables',
       type: 'GET',
-      done: (response) => {
-        console.log("success")
-        console.log(response['data'])
-        this.state.tables = response['data']
-      },
-      error: (response) => {
-        console.log("error")
-        console.log(response)
+      success: (response) => {
+        this.setState({ tables: response.data })
       }
     });
   }
 
   render() {
     let tables = this.state.tables.map(table => (
-      <div key={table.id} className='row'>
-        <div className='col-md-3'>{table.name}</div>
-      </div>
+      <DashboardTable key={table.id} table={table} />
     ))
 
     return(
