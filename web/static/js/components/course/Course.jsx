@@ -1,6 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Navbar from './Navbar'
 import Dashboard from './Dashboard'
 import StudentInfo from './StudentInfo'
 import Messages from './Messages'
@@ -12,7 +11,7 @@ import {
   Redirect
 } from 'react-router-dom'
 
-var Course = React.createClass({
+class Course extends React.Component {
   render() {
     return(
       <Router>
@@ -31,6 +30,6 @@ var Course = React.createClass({
       </Router>
     )
   }
-})
+}
 
 export default Course;

@@ -4,6 +4,8 @@ defmodule Whitepages2.Table do
   schema "tables" do
     belongs_to :user, Whitepages2.User
     belongs_to :course, Whitepages2.Course
+    has_many :table_columns, Whitepages2.TableColumn
+    has_many :table_rows, Whitepages2.TableRow
     field :name, :string
 
     timestamps()

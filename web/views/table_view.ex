@@ -13,6 +13,9 @@ defmodule Whitepages2.TableView do
     %{id: table.id,
       user_id: table.user_id,
       course_id: table.course_id,
-      name: table.name}
+      name: table.name,
+      columns: render_many(table.table_columns, Whitepages2.TableColumnView, "table_column.json"),
+      rows: render_many(table.table_rows, Whitepages2.TableRowView, "table_row.json")
+    }
   end
 end

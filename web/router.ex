@@ -47,7 +47,18 @@ defmodule Whitepages2.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Whitepages2 do
-  #   pipe_through :api
-  # end
+  scope "/api", Whitepages2 do
+    pipe_through :api
+
+    resources "/organizations", OrganizationController do
+      resources "/users", UserController
+      resources "/courses", CourseController
+      resources "/enrollments", EnrollmentController, except: [:new, :edit]
+      resources "/sections", SectionController, except: [:new, :edit]
+      resources "/tables", TableController, except: [:new, :edit] do
+        resources "/table_rows", TableRowController, except: [:new, :edit]
+        resources "/table_columns", TableColumnController, except: [:new, :edit]
+      end
+    end
+  end
 end

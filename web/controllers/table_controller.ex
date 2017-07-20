@@ -25,7 +25,7 @@ defmodule Whitepages2.TableController do
   end
 
   def show(conn, %{"id" => id,  "organization_id" => organization_id}) do
-    table = Apartmentex.get!(Repo, Table, id, organization_id)
+    table = Apartmentex.get!(Repo, Table, id, organization_id) |> Repo.preload(:table_columns) |> Repo.preload(:table_rows)
     render(conn, "show.json", table: table)
   end
 
