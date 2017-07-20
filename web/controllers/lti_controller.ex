@@ -6,6 +6,10 @@ defmodule Whitepages2.LtiController do
   alias Whitepages2.Organization
   alias Whitepages2.Course
 
+  def index(conn, _params) do
+    render(conn, "index.html")
+  end
+
   def account(conn, %{"oauth_consumer_key" => oauth_consumer_key} = params) do
     organization = Organization
       |> Organization.by_key(oauth_consumer_key)

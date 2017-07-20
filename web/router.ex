@@ -24,7 +24,7 @@ defmodule Whitepages2.Router do
   scope "/", Whitepages2 do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", LtiController, :index
     resources "/organizations", OrganizationController do
       resources "/users", UserController
       resources "/courses", CourseController
