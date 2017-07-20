@@ -4,7 +4,7 @@ defmodule Whitepages2.SectionController do
   alias Whitepages2.Section
 
   def index(conn, %{"organization_id" => organization_id}) do
-    sections = Repo.all(Section)
+    sections = Apartmentex.all(Repo, Section, organization_id)
     render(conn, "index.json", sections: sections, organization_id: organization_id)
   end
 

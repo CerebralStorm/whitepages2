@@ -4,7 +4,7 @@ defmodule Whitepages2.TableController do
   alias Whitepages2.Table
 
   def index(conn, %{"organization_id" => organization_id}) do
-    tables = Repo.all(Table)
+    tables = Apartmentex.all(Repo, Table, organization_id)
     render(conn, "index.json", tables: tables, organization_id: organization_id)
   end
 
