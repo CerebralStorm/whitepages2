@@ -46,9 +46,7 @@ defmodule Whitepages2.UserController do
 
     case Apartmentex.update(Repo, changeset, organization_id) do
       {:ok, user} ->
-        conn
-        |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: organization_user_path(conn, :show, organization_id, user))
+        render(conn, "show.json", user: user)
       {:error, changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset, organization_id: organization_id)
     end

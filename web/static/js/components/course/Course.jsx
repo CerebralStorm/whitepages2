@@ -4,6 +4,7 @@ import Dashboard from './Dashboard'
 import StudentInfo from './StudentInfo'
 import Profile from './Profile'
 import Messages from './Messages'
+import EditStudentInfo from './EditStudentInfo'
 
 import {
   BrowserRouter as Router,
@@ -25,6 +26,7 @@ class Course extends React.Component {
 
           <Redirect from="/" exact to="/dashboard" />
           <Route path="/users/:user_id" component={Profile}/>
+          <Route path="/users/:user_id/edit" component={EditStudentInfo}/>
           <Route path="/dashboard" component={Dashboard}/>
           <Route path="/student_info" component={StudentInfo}/>
           <Route path="/messages" component={Messages}/>

@@ -35,7 +35,7 @@ defmodule Whitepages2.TableController do
     table = Apartmentex.get!(Repo, Table, id, organization_id)
     changeset = Table.changeset(table, table_params)
 
-    case Repo.update(changeset) do
+    case Apartmentex.update(Repo, changeset, organization_id) do
       {:ok, table} ->
         render(conn, "show.json", table: table)
       {:error, changeset} ->

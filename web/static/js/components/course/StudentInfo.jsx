@@ -20,15 +20,16 @@ class StudentInfo extends React.Component {
     });
   }
   render() {
-    console.log(this.state.users)
     let users = this.state.users.map(user => (
-      <Link key={user.id} to={"/users/" + user.id}>{user.sis_id}</Link>
+      <li key={user.id}><Link to={"/users/" + user.id}>{user.sis_id}</Link></li>
     ))
 
     return(
       <div>
         <h1>Student Info</h1>
-        {users}
+        <ul className="nav nav-pills nav-stacked">
+          {users}
+        </ul>
       </div>
     )
   }

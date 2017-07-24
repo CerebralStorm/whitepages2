@@ -42,46 +42,60 @@ end
 #   }
 # })
 
-create("http://localhost:4000/organizations/1/tables", {
-  table: {
-    user_id: 1,
-    course_id: 1,
-    name: 'Table 2'
-  }
-})
+# create("http://localhost:4000/organizations/1/users", {
+#   user: {
+#     canvas_user_id: "5",
+#     sis_id: "user_5",
+#     data: {
+#       first_name: 'Laura',
+#       last_name: 'Evans',
+#       email: 'laura@test.com',
+#       phone: '801-555-6666',
+#       address: '456 Vista View St.'
+#     }
+#   }
+# })
+
+# create("http://localhost:4000/organizations/1/tables", {
+#   table: {
+#     user_id: 1,
+#     course_id: 1,
+#     name: 'Table 2'
+#   }
+# })
 
 create("http://localhost:4000/organizations/1/tables/1/table_rows", {
   table_row: {
     table_id: 2,
     data: {
-      "name" => "Joe",
-      "age" => "31",
+      "name" => "Jon",
+      "age" => "30",
       "gender" => "male"
     }
   }
 })
 
-create("http://localhost:4000/organizations/1/tables/1/table_columns", {
-  table_column: {
-    table_id: 2,
-    name: "name",
-    position: 0
-  }
-})
+# create("http://localhost:4000/organizations/1/tables/1/table_columns", {
+#   table_column: {
+#     table_id: 1,
+#     name: "name",
+#     position: 0
+#   }
+# })
 
-create("http://localhost:4000/organizations/1/tables/1/table_columns", {
-  table_column: {
-    table_id: 2,
-    name: "age",
-    position: 1
-  }
-})
+# create("http://localhost:4000/organizations/1/tables/1/table_columns", {
+#   table_column: {
+#     table_id: 1,
+#     name: "age",
+#     position: 1
+#   }
+# })
 
-create("http://localhost:4000/organizations/1/tables/1/table_columns", {
-  table_column: {
-    table_id: 2,
-    name: "gender",
-    position: 2
-  }
-})
+# create("http://localhost:4000/organizations/1/tables/1/table_columns", {
+#   table_column: {
+#     table_id: 1,
+#     name: "gender",
+#     position: 2
+#   }
+# })
 

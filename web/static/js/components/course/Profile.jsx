@@ -1,11 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import { Link } from 'react-router-dom'
 import $ from "jquery"
+import EditStudentInfo from "./EditStudentInfo"
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       user: {}
     };
@@ -29,6 +30,8 @@ class Profile extends React.Component {
 
     return(
       <div>
+        <a onClick={this.props.history.goBack}>Back</a>
+        <Link to={"/users/" + this.state.user.id + "/edit"}>Edit</Link>
         <h1>Profile</h1>
         <div>{this.state.user.canvas_user_id}</div>
         <div>{this.state.user.sis_id}</div>

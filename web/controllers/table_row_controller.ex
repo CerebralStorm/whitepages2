@@ -4,6 +4,14 @@ defmodule Whitepages2.TableRowController do
   alias Whitepages2.TableRow
 
   def index(conn, %{"organization_id" => organization_id}) do
+    # get table row records that where data contains the key "age"
+    # query = TableRow |> where([m], fragment("? \\? ?", m.data, "age"))
+
+    # query = Whitepages2.TableRow |> where([t], fragment("data->>'age' = ?", "30"))
+    # query = Whitepages2.TableRow |> where([t], fragment("data->>'name' iLike ?", "jon"))
+    # query = Whitepages2.TableRow |> where([t], fragment("data->>'name' iLike ?", "%e%"))
+
+    # Apartmentex.all(Whitepages2.Repo, query, "1")
     table_rows = Apartmentex.all(Repo, TableRow, organization_id)
     render(conn, "index.json", table_rows: table_rows)
   end
